@@ -19,6 +19,6 @@ public class RedirectService {
     }
 
     public Optional<OriginalUrl> getOriginalUrl(final DataStoreId dataStoreId) {
-        return Optional.empty();
+        return urlDataStoreDao.getOriginalUrl(dataStoreId);
     }
 }
