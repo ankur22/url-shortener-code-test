@@ -1,24 +1,40 @@
 package com.ankur.urlshortener.shortener.resource;
 
+import com.ankur.urlshortener.common.model.OriginalUrl;
+import com.ankur.urlshortener.common.model.ShortUrl;
 import com.ankur.urlshortener.shortener.dto.OriginalUrlDto;
 import com.ankur.urlshortener.shortener.dto.ShortUrlDto;
+import com.ankur.urlshortener.shortener.model.HostName;
+import com.ankur.urlshortener.shortener.service.ShortenerService;
+import com.ankur.urlshortener.shortener.transformer.ShortenerTransformer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
 class ShortenerResource {
 
+    private final ShortenerService shortenerService;
+    private final ShortenerTransformer shortenerTransformer;
+
+    @Autowired
+    public ShortenerResource(final ShortenerService shortenerService,
+                             final ShortenerTransformer shortenerTransformer) {
+        this.shortenerService = shortenerService;
+        this.shortenerTransformer = shortenerTransformer;
+    }
+
     @RequestMapping(value = "/shorten", method = RequestMethod.POST,
             consumes = "application/json", produces = "application/json")
     @ResponseBody
-    ShortUrlDto shortenUrl(@RequestBody final OriginalUrlDto originalUrlDto,
+    ShortUrlDto shortenUrl(@RequestHeader("host") String hostName,
+                           @RequestBody final OriginalUrlDto originalUrlDto,
                         HttpServletResponse response) {
+        OriginalUrl originalUrl = shortenerTransformer.from(originalUrlDto);
+        ShortUrl shortUrl = shortenerService.store(originalUrl, HostName.of(hostName));
         response.setStatus(201);
-        return new ShortUrlDto("localhost:8080/1");
+        return shortenerTransformer.from(shortUrl);
     }
 }

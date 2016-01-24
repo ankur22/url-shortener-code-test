@@ -43,6 +43,6 @@ public class ShortenerResourceTest {
         then().
                 contentType(ContentType.JSON).
                 statusCode(201).
-                body("url", Matchers.is("localhost:8080/1"));
+                body("url", Matchers.is(String.format("localhost:%d/1", port)));
     }
 }
