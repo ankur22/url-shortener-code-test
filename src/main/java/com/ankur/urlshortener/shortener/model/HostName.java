@@ -1,14 +1,14 @@
-package com.ankur.urlshortener.common.model;
+package com.ankur.urlshortener.shortener.model;
 
-public class OriginalUrl {
+public class HostName {
     final String value;
 
-    private OriginalUrl(String value) {
+    private HostName(String value) {
         this.value = value;
     }
 
-    public static OriginalUrl of(final String url) {
-        return new OriginalUrl(url);
+    public static HostName of(final String hostName) {
+        return new HostName(hostName);
     }
 
     public String getValue() {
@@ -20,9 +20,9 @@ public class OriginalUrl {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OriginalUrl that = (OriginalUrl) o;
+        HostName hostName = (HostName) o;
 
-        return value != null ? value.equals(that.value) : that.value == null;
+        return value != null ? value.equals(hostName.value) : hostName.value == null;
 
     }
 
@@ -33,7 +33,7 @@ public class OriginalUrl {
 
     @Override
     public String toString() {
-        return "OriginalUrl{" +
+        return "HostName{" +
                 "value='" + value + '\'' +
                 '}';
     }
