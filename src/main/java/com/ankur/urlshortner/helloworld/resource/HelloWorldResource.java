@@ -1,4 +1,4 @@
-package com.ankur.urlshortner.resource;
+package com.ankur.urlshortner.helloworld.resource;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

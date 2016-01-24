@@ -1,4 +1,4 @@
-package com.ankur.urlshortner.resource;
+package com.ankur.urlshortner.helloworld.resource;
 
 import com.ankur.urlshortner.UrlShortnerApplication;
 import com.jayway.restassured.RestAssured;
