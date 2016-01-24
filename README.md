@@ -22,18 +22,18 @@ run it.
 ##Setup Instructions
 
 Install maven:
- - sudo apt-get install maven
+ - In terminal type: sudo apt-get install maven
 Install the latest versin of JDK 8:
- - from http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+ - From http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 ##Run Instructions
 
 ###To run the tests and check configuration of system:
- - in Terminal type: mvn package
+ - In Terminal type: mvn package
 
 ###To run the app:
- - Navigate to the root directory of UrlShortner
- - in termainl type: mvn spring-boot:run
+ - In termainl navigate to the root directory of UrlShortner
+ - In termainl type: mvn spring-boot:run
  - Open your browser and navigate to localhost:8080
  - To shut down the web application, in terminal type: Ctrl+C
 
