@@ -1,7 +1,7 @@
-package com.ankur.urlshortner.common.dao;
+package com.ankur.urlshortener.common.dao;
 
-import com.ankur.urlshortner.common.model.DataStoreId;
-import com.ankur.urlshortner.common.model.OriginalUrl;
+import com.ankur.urlshortener.common.model.DataStoreId;
+import com.ankur.urlshortener.common.model.OriginalUrl;
 
 public interface UrlDataStoreDao {
     DataStoreId storeOriginalUrl(final OriginalUrl originalUrl);

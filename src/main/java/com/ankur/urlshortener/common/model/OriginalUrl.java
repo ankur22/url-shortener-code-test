@@ -1,8 +1,8 @@
-package com.ankur.urlshortner.common.model;
+package com.ankur.urlshortener.common.model;
 
 import lombok.Value;
 
 @Value(staticConstructor = "of")
-public class ShortUrl {
+public class OriginalUrl {
     final String value;
 }

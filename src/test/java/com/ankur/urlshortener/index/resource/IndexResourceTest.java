@@ -1,7 +1,8 @@
-package com.ankur.urlshortner.helloworld.resource;
+package com.ankur.urlshortener.index.resource;
 
-import com.ankur.urlshortner.UrlShortnerApplication;
+import com.ankur.urlshortener.UrlShortnerApplication;
 import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.http.ContentType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,13 +13,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import static com.jayway.restassured.RestAssured.when;
-import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = UrlShortnerApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
-public class HelloWorldResourceTest {
+public class IndexResourceTest {
 
     @Value("${local.server.port}")
     int port;
@@ -29,11 +29,11 @@ public class HelloWorldResourceTest {
     }
 
     @Test
-    public void makeSureHelloWorldIsReturned() {
+    public void makeSureHtmlFileReturned() {
         when().
-                get("/hello-world").
+                get("/").
         then().
                 statusCode(200).
-                body(equalTo(HelloWorldResource.HELLO_WORLD));
+                contentType(ContentType.HTML);
     }
 }
