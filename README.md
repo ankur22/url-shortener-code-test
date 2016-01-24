@@ -28,9 +28,10 @@ Install the latest versin of JDK 8:
 
 ##Run Instructions
 
-To run the tests and check configuration of system:
- - mvn package
-To run the app:
+###To run the tests and check configuration of system:
+ - in Terminal type: mvn package
+
+###To run the app:
  - Navigate to the root directory of UrlShortner
  - in termainl type: mvn spring-boot:run
  - Open your browser and navigate to localhost:8080
@@ -57,13 +58,19 @@ To run the app:
      - Path param with id
      - Redirect to original Url
 
+ - Hello World
+     - Url: /hello-world
+     - Type: GET
+     - Responds with 200 and "Hello World"
+
 Base URL: http://localhost:8080/
 
 ###Backend Technology:
  - Spring Boot
- - JDK 8
+ - Java 8
 
 ###Frontend Technology:
- - Javascript
+ - Javascript & JQuery
  - CSS
  - HTML
+ - Bootstrap
