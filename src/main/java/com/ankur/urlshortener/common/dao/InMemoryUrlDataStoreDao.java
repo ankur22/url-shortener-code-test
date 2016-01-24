@@ -10,15 +10,23 @@ import java.util.Map;
 @Repository
 class InMemoryUrlDataStoreDao implements UrlDataStoreDao {
 
-    private final Map<DataStoreId, OriginalUrl> dataStore;
+    private final Map<OriginalUrl, DataStoreId> dataStore;
+    private int count;
 
     InMemoryUrlDataStoreDao() {
         dataStore = new HashMap<>();
+        count = 0;
     }
 
     @Override
     public DataStoreId storeOriginalUrl(OriginalUrl originalUrl) {
-        return DataStoreId.of("1");
+        DataStoreId id = dataStore.get(originalUrl);
+        if (id == null) {
+            ++count;
+            id = DataStoreId.of(count);
+            dataStore.put(originalUrl, id);
+        }
+        return id;
     }
 
     @Override

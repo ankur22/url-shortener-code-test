@@ -11,6 +11,10 @@ public class DataStoreId {
         return new DataStoreId(id);
     }
 
+    public static DataStoreId of(int id) {
+        return new DataStoreId(String.valueOf(id));
+    }
+
     public String getValue() {
         return value;
     }
