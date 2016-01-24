@@ -11,18 +11,20 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import static com.jayway.restassured.RestAssured.given;
 
+@DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = UrlShortnerApplication.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
 public class ShortenerResourceTest {
 
-    private static final OriginalUrlDto ORIGINAL_URL = new OriginalUrlDto("https://www.google.co.uk/maps");
+    private static final OriginalUrlDto ORIGINAL_URL = new OriginalUrlDto("https://www.google.com");
 
     @Value("${local.server.port}")
     int port;
