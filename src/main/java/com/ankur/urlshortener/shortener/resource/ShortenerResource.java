@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotNull;
 
 @Controller
 class ShortenerResource {
@@ -30,11 +31,18 @@ class ShortenerResource {
             consumes = "application/json", produces = "application/json")
     @ResponseBody
     ShortUrlDto shortenUrl(@RequestHeader("host") String hostName,
-                           @RequestBody final OriginalUrlDto originalUrlDto,
+                           @NotNull @RequestBody final OriginalUrlDto originalUrlDto,
                         HttpServletResponse response) {
+        validate(originalUrlDto);
         OriginalUrl originalUrl = shortenerTransformer.from(originalUrlDto);
         ShortUrl shortUrl = shortenerService.store(originalUrl, HostName.of(hostName));
         response.setStatus(201);
         return shortenerTransformer.from(shortUrl);
+    }
+
+    private void validate(final OriginalUrlDto originalUrlDto) {
+        if (originalUrlDto.getUrl() == null || originalUrlDto.getUrl().length() == 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }

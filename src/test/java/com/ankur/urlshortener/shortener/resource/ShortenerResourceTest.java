@@ -45,4 +45,16 @@ public class ShortenerResourceTest {
                 statusCode(201).
                 body("url", Matchers.is(String.format("localhost:%d/1", port)));
     }
+
+    @Test
+    public void ensure400IsReturnedWhenEmptyUrlIsSent() {
+        given().
+                body(new OriginalUrlDto("")).
+                contentType(ContentType.JSON).
+                accept(ContentType.JSON).
+        when().
+                post("/shorten").
+        then().
+                statusCode(400);
+    }
 }
