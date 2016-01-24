@@ -18,3 +18,51 @@ don't spend more than a few hours on it.
 
 Please fork this repository, write some code and update this README with a guide of how to
 run it.
+
+##Setup Instructions
+
+Install maven:
+ - sudo apt-get install maven
+Install the latest versin of JDK 8:
+ - from http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+##Run Instructions
+
+To run the tests and check configuration of system:
+ - mvn package
+To run the app:
+ - Navigate to the root directory of UrlShortner
+ - mvn spring-boot:run
+ - Open your browser and navigate to localhost:8080
+
+##About the Project
+
+###End points:
+ - Homepage
+     - Url: /
+     - Type: GET
+     - returns a web page
+
+ - Shorten Url
+     - Url: /shorten
+     - Needs to be an AJAX call
+     - Type: POST
+     - Body: Url to shorten
+     - Return: Shortened Url in body of response, status 201
+
+ - Reroute to new route
+     - Url: /{id}
+     - Type: GET
+     - Path param with id
+     - Redirect to original Url
+
+Base URL: http://localhost:8080/
+
+###Backend Technology:
+ - Spring Boot
+ - JDK 8
+
+###Frontend Technology:
+ - Javascript
+ - CSS
+ - HTML
