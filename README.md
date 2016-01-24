@@ -32,8 +32,9 @@ To run the tests and check configuration of system:
  - mvn package
 To run the app:
  - Navigate to the root directory of UrlShortner
- - mvn spring-boot:run
+ - in termainl type: mvn spring-boot:run
  - Open your browser and navigate to localhost:8080
+ - To shut down the web application, in terminal type: Ctrl+C
 
 ##About the Project
 
