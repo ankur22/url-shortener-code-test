@@ -29,11 +29,11 @@ Install the latest versin of JDK 8:
 ##Run Instructions
 
 ###To run the tests and check configuration of system:
- - In Terminal type: mvn package
+ - In terminal type: mvn package
 
 ###To run the app:
- - In termainl navigate to the root directory of UrlShortner
- - In termainl type: mvn spring-boot:run
+ - In terminal navigate to the root directory of UrlShortener
+ - In terminal type: mvn spring-boot:run
  - Open your browser and navigate to localhost:8080
  - To shut down the web application, in terminal type: Ctrl+C
 
